@@ -2,7 +2,7 @@
   "name": "led-canvas-led",
   "version": "0.0.1",
   "description": "Example LED class to be used by https://github.com/marionebl/led-canvas",
-  "main": "lib/led-canvas-led.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "npm run browserify && npm run uglify",
     "watch": "./node_modules/.bin/nodemon --exec \"npm run build\"",
