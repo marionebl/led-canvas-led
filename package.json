@@ -1,6 +1,6 @@
 {
   "name": "led-canvas-led",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Example LED class to be used by https://github.com/marionebl/led-canvas",
   "main": "lib/index.js",
   "scripts": {
