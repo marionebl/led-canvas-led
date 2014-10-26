@@ -8,6 +8,10 @@ class State extends Store {
 	factory(initial) {
 		return new State(initial);
 	}
+
+	is (obj) {
+		return Object.is(this.get(), obj);
+	}
 }
 
 module.exports = State;

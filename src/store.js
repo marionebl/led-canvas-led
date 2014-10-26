@@ -2,7 +2,7 @@ var objectAssign = require('object-assign');
 
 class Store{
 	constructor(initial = {}) {
-		this._ = initial;
+		this._ = objectAssign({}, initial);
 	}
 
 	factory(initial) {
@@ -27,10 +27,6 @@ class Store{
 		} else {
 			return this._[key];
 		}
-	}
-
-	is (obj) {
-		return Object.is(this._, obj);
 	}
 }
 

@@ -29,7 +29,11 @@ class Led {
 	}
 
 	cache () {
+		if (this.state.is(this.prev)) {
+			return true;
+		}
 		this.prev = this.state.get();
+		return false;
 	}
 
 	toggle (flag) {
@@ -70,7 +74,6 @@ class Led {
 			context.clearRect(x, y, this.size, this.size);
 		}
 
-		context.imageSmoothingEnabled = false;
 		context.beginPath();
 		context.arc(x + radius, y + radius, inner, 0, arc);
 
@@ -82,8 +85,9 @@ class Led {
 	}
 
 	render (context) {
-		if (this.state.is(this.prev)) return;
-		this.prev = this.state.get();
+		if (this.cache()) {
+			return;
+		}
 
 		context.save();
 		this.figure(context);
