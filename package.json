@@ -26,5 +26,8 @@
   "homepage": "https://github.com/marionebl/led-canvas-led",
   "devDependencies": {
     "6to5": "^1.9.10"
+  },
+  "dependencies": {
+    "object-assign": "^1.0.0"
   }
 }
