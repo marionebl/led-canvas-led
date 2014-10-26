@@ -56,7 +56,7 @@ class Led {
 	set enabled (state) {
 		this.cache();
 		this.state = this.state.set('enabled', state);
-		this.state = this.set('styles', this.styles.get(state ? 'enabled' : 'disabled'));
+		this.state = this.state.set('styles', this.styles.get(state ? 'enabled' : 'disabled'));
 		return this;
 	}
 
