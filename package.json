@@ -4,10 +4,11 @@
   "description": "Example LED class to be used by https://github.com/marionebl/led-canvas",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "npm run 6to5",
-    "postpublish": "npm run reset",
-    "reset": "git checkout -- ./lib/",
-    "6to5": "6to5 ./lib/index.js -o ./lib/index.js"
+    "prepublish": "mkdir -p ./lib && npm run 6to5",
+    "reset": "rm -r ./lib",
+    "6to5": "6to5 ./src --out-dir ./lib",
+    "test": "npm run test-spec",
+    "test-spec": "mocha test/test-*.js"
   },
   "repository": {
     "type": "git",
@@ -25,9 +26,8 @@
   },
   "homepage": "https://github.com/marionebl/led-canvas-led",
   "devDependencies": {
-    "6to5": "^1.9.10"
-  },
-  "dependencies": {
+    "6to5": "^1.9.10",
+    "mocha": "^2.0.1",
     "object-assign": "^1.0.0"
   }
 }
