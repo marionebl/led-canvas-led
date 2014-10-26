@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "mkdir -p ./lib && npm run 6to5",
-    "reset": "rm -r ./lib",
     "6to5": "6to5 ./src --out-dir ./lib",
     "test": "npm run test-spec && npm run test-coverage",
     "test-spec": "mocha test/test-*.js",
