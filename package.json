@@ -7,7 +7,7 @@
     "prepublish": "mkdir -p ./lib && npm run 6to5",
     "reset": "rm -r ./lib",
     "6to5": "6to5 ./src --out-dir ./lib",
-    "test": "npm run test-spec",
+    "test": "npm run test-spec && npm run test-coverage",
     "test-spec": "mocha test/test-*.js",
     "test-coverage": "istanbul cover _mocha --report lcovonly test/test-*.js",
     "travis-coveralls": "cat ./coverage/lcov.info | coveralls"
@@ -33,7 +33,9 @@
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.2",
     "mocha": "^2.0.1",
-    "object-assign": "^1.0.0",
     "sinon": "^1.10.3"
+  },
+  "dependencies": {
+    "object-assign": "^1.0.0"
   }
 }
