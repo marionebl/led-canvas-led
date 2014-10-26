@@ -8,7 +8,9 @@
     "reset": "rm -r ./lib",
     "6to5": "6to5 ./src --out-dir ./lib",
     "test": "npm run test-spec",
-    "test-spec": "mocha test/test-*.js"
+    "test-spec": "mocha test/test-*.js",
+    "test-coverage": "istanbul cover _mocha --report lcovonly test/test-*.js",
+    "travis-coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/marionebl/led-canvas-led",
   "devDependencies": {
     "6to5": "^1.9.10",
+    "coveralls": "^2.11.2",
     "istanbul": "^0.3.2",
     "mocha": "^2.0.1",
     "object-assign": "^1.0.0",
