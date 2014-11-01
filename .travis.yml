@@ -3,3 +3,9 @@ node_js:
   - "0.11"
   - "0.10"
 after_success: npm run travis-coveralls
+env:
+  global:
+    - secure: MpxuKEKrqJvxWrgIA4kCgBwOSBqwqj8DCe9+6XdPzYDX2KmGGN/eldLcdfiT54V0UCWP276GtA6IvTJGdHxF7iGPI968/bDZ2j1v3c2y+vKW58J9L/oA2r0cR+oXFeOOBtdUlUHdMz4oUB3ChzBIm+V7sNjKQP/2qQWmIbhdjNY=
+    - secure: GyTjEpI0f2ZI51QbvfPmDWlqW26tZ8tfU4tuNdajSed+p7LvyULopqh2q1oF3ztgO64fYpM4kvsQgXnP8qqNXRp8V0CeBUzECNv4nkYmSWBN/nhbS7B81F3U8dg/CiwBWewU7fT6eQUW4UkvW1F6pU+Dtk3GZlMjpvwRwC3NsbM=
+addons:
+  sauce_connect: true
