@@ -23,9 +23,10 @@ class Led {
 		});
 
 		this.state = new State({
-			enabled: enabled,
-			styles: new Styles(this.styles.get(enabled ? 'enabled' : 'disabled'))
+			enabled: enabled
 		});
+
+		this.enabled = enabled;
 	}
 
 	cache () {
@@ -77,8 +78,10 @@ class Led {
 		context.beginPath();
 		context.arc(x + radius, y + radius, inner, 0, arc);
 
-		this.state.get('styles').forEach(function(property, value){
-			context[property] = value;
+		let styles = this.state.get('styles') || {};
+
+		Object.keys(styles).forEach(function(property){
+			context[property] = styles[property];
 		});
 
 		context.fill();
