@@ -47,9 +47,14 @@ class Led {
 		return this;
 	}
 
-	set (key, value) {
+	set(key, value) {
+		if (typeof key === 'undefined') {
+			return this;
+		}
+
 		this.cache();
-		let styles = this.state.get('styles').set(key, value);
+		let styles = this.state.get('styles');
+		styles[key] = value;
 		this.state = this.state.set('styles', styles);
 		return this;
 	}

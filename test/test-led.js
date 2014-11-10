@@ -1,5 +1,6 @@
 var Led = require('../');
 var assert = require('chai').assert;
+var deepcopy = require('deep-copy');
 
 describe('Led.constructor', function() {
 	describe('when constructed', function() {
@@ -59,6 +60,68 @@ describe('Led.toggle', function() {
 
 			assert.isTrue(initialFalseLed.enabled);
 			assert.isFalse(initialTrueLed.enabled);
+		});
+	});
+
+	describe('when called with true', function(){
+		it('should set the enabled property to true', function(){
+			initialFalseLed.toggle(true);
+			initialTrueLed.toggle(true);
+
+			assert.isTrue(initialFalseLed.enabled);
+			assert.isTrue(initialTrueLed.enabled);
+		});
+	});
+
+	describe('when called with false', function(){
+		it('should set the enabled property to false', function(){
+			initialFalseLed.toggle(false);
+			initialTrueLed.toggle(false);
+
+			assert.isFalse(initialFalseLed.enabled);
+			assert.isFalse(initialTrueLed.enabled);
+		});
+	});
+});
+
+describe('Led.set', function(){
+	describe('when called with no arguments', function(){
+		var options = {
+			x: 1,
+			y: 1,
+			size: 10
+		};
+
+		var led = new Led(options.x, options.y, options.size, true);
+		var copy = deepcopy(led);
+
+		it ('should do nothing', function(){
+			led.set();
+			assert.deepEqual(led, copy);
+		});
+	});
+
+	describe('when called with key and value', function(){
+		var options = {
+			x: 1,
+			y: 1,
+			size: 10
+		};
+
+		var led = new Led(options.x, options.y, options.size, true);
+
+		beforeEach(function(){
+			var led = new Led(options.x, options.y, options.size, true);
+		});
+
+		it ('should write new style props if unknown', function(){
+			led.set('stroke', 'red');
+			assert.propertyVal(led.state.get('styles'), 'stroke', 'red');
+		});
+
+		it ('should overwrite style props if known', function(){
+			led.set('fillStyle', 'red');
+			assert.propertyVal(led.state.get('styles'), 'fillStyle', 'red');
 		});
 	});
 });
