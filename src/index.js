@@ -6,6 +6,14 @@ var Styles = require('./styles');
 var State = require('./state');
 
 class Led {
+	/**
+	 * Construct a new instance of Led
+	 * @param  {Integer} x - x coordinate of the new Led
+	 * @param  {Integer} y - y coordinate of the new Led
+	 * @param  {Integer} size - diameter in px of the new Led
+	 * @param {Boolean} enabled - enabled/disabled state of the new Led
+	 * @return {Led} new Led instance
+	 */
 	constructor (x, y, size, enabled = false) {
 		this.x = x;
 		this.y = y;
@@ -29,6 +37,10 @@ class Led {
 		this.enabled = enabled;
 	}
 
+	/**
+	 * Recaches the led's current state
+	 * @return {Boolean} - if the current state is valid from cache
+	 */
 	cache () {
 		if (this.state.is(this.prev)) {
 			return true;
@@ -37,6 +49,11 @@ class Led {
 		return false;
 	}
 
+	/**
+	 * Toggles the led's state
+	 * @param {Boolean} [flag] Forced target state flag
+	 * @return {Led} Current instance of Led
+	 */
 	toggle (flag) {
 		if (typeof flag === 'boolean') {
 			this.enabled = flag;
@@ -47,6 +64,12 @@ class Led {
 		return this;
 	}
 
+	/**
+	 * Sets a style property
+	 * @param {String} key - Name of the style property to set
+	 * @param {String} vale - Value to assign to the property with name [key]
+	 * @return {Led} Current instance of Led
+	 */
 	set(key, value) {
 		if (typeof key === 'undefined') {
 			return this;
@@ -70,6 +93,10 @@ class Led {
 		return this.state.get('enabled');
 	}
 
+	/**
+	 * Constructs the led graphics based on its state and style properties
+	 * @param {CanvasRenderingContext2D} context - Rendering context to paint on
+	 */
 	figure(context) {
 		let x = this.x*this.size;
 		let y = this.y*this.size;
@@ -92,6 +119,10 @@ class Led {
 		context.fill();
 	}
 
+	/**
+	 * Renders the led on the given RenderingContext
+	 * @param {CanvasRenderingContext2D} context - Rendering context to paint on
+	 */
 	render (context) {
 		if (this.cache()) {
 			return;
