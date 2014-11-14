@@ -163,8 +163,8 @@ describe('Led.enabled setter', function(){
 
 	describe('when set to true', function(){
 		it('should return true', function(){
-			initialTrueLed.enabled = false;
-			initialFalseLed.enabled = false;
+			initialTrueLed.enabled = true;
+			initialFalseLed.enabled = true;
 
 			assert.isTrue(initialTrueLed.enabled);
 			assert.isTrue(initialFalseLed.enabled);
