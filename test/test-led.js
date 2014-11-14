@@ -114,14 +114,60 @@ describe('Led.set', function(){
 			var led = new Led(options.x, options.y, options.size, true);
 		});
 
-		it ('should write new style props if unknown', function(){
+		it('should write new style props if unknown', function(){
 			led.set('stroke', 'red');
 			assert.propertyVal(led.state.get('styles'), 'stroke', 'red');
 		});
 
-		it ('should overwrite style props if known', function(){
+		it('should overwrite style props if known', function(){
 			led.set('fillStyle', 'red');
 			assert.propertyVal(led.state.get('styles'), 'fillStyle', 'red');
+		});
+	});
+});
+
+describe('Led.enabled getter', function(){
+	describe('when read on enabled Led', function(){
+		var led = new Led(0, 0, 1, true);
+		it('should return true', function(){
+			assert.isTrue(led.enabled);
+		});
+	});
+
+	describe('when read on disabled Led', function(){
+		var led = new Led(0, 0, 1, false);
+		it('should return false', function(){
+			assert.isFalse(led.enabled);
+		});
+	});
+});
+
+describe('Led.enabled setter', function(){
+	var initialTrueLed = null;
+	var initialFalseLed = null;
+
+	beforeEach(function(){
+		initialTrueLed = new Led(0, 0, 1, true);
+		initialFalseLed = new Led(0, 0, 1, false);
+	});
+
+	describe('when set to false', function(){
+		it('should return false', function(){
+			initialTrueLed.enabled = false;
+			initialFalseLed.enabled = false;
+
+			assert.isFalse(initialTrueLed.enabled);
+			assert.isFalse(initialFalseLed.enabled);
+		});
+	});
+
+	describe('when set to true', function(){
+		it('should return true', function(){
+			initialTrueLed.enabled = false;
+			initialFalseLed.enabled = false;
+
+			assert.isTrue(initialTrueLed.enabled);
+			assert.isTrue(initialFalseLed.enabled);
 		});
 	});
 });
