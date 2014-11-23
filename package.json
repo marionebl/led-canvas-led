@@ -4,8 +4,8 @@
   "description": "Example LED class to be used by https://github.com/marionebl/led-canvas",
   "main": "lib/index.js",
   "scripts": {
-    "prepublish": "mkdir -p ./lib && npm run 6to5",
-    "6to5": "6to5 ./src --out-dir ./lib",
+    "prepublish": "mkdir -p ./lib && npm run build",
+    "build": "6to5 ./src --out-dir ./lib",
     "test": "npm run test-spec && npm run test-coverage",
     "test-spec": "mocha test/test-*.js",
     "test-coverage": "istanbul cover _mocha --report lcovonly test/test-*.js",
